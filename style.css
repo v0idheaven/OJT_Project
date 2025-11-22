@@ -2,59 +2,80 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
-
-html, body {
-    height: 100%;
-    width: 100%;
+body {
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #f0f0f0;
 }
+
 .container {
-    height: 57vh; 
-    width: 47%;
-    padding: 10px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-width: 400px; 
+    width: 350px;
+    background-color: white;
+    padding: 20px;
     border: 2px solid black;
+    border-radius: 10px;
 }
 
-.display #screen {
+#screen {
     width: 100%;
-    height: 75px;
-    font-size: 35px;
-    border: 1px solid black;
+    height: 60px;
+    font-size: 30px;
     text-align: right;
-    padding-right: 15px;
-    border-radius: 6px;
+    padding-right: 10px;
     margin-bottom: 20px;
-    background-color: rgb(229, 229, 229);
+    background-color: #eeeeee;
+    border: 1px solid black;
 }
 
-.btns {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+#mode-toggle-container {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#toggle-mode {
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
 }
 
 .row {
-    width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
-.btns .row button {
-    width: 15%; 
-    height: 45px;
-    font-size: 18px;
-    font-weight: 400;
+.btn {
+    width: 23%;
+    height: 50px;
+    font-size: 20px;
+    background-color: #e0e0e0;
     border: none;
-    border-radius: 6px;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
+.btn:hover {
+    background-color: #cccccc;
+}
+
+#scientific-section {
+    display: none;
+    border-bottom: 2px dashed black;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.open {
+    display: block !important;
+}
+
+#equal-btn {
+    width: 48%;
 }
