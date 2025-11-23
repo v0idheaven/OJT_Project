@@ -15,6 +15,11 @@ btns.forEach((btn) => {
             screen.value += 'log(';
             return;
         }
+        
+        if (btntext === 'root'){
+            screen.value += 'sqrt(';
+            return;
+        }
 
         if (btntext !== 'AC' && btntext !== 'CE' && btntext !== '=') {
             
@@ -32,19 +37,21 @@ btns.forEach((btn) => {
             screen.value = screen.value.slice(0,-1)
         }
 
-        if (btntext === '='){
-            try {
-                let val = screen.value;
-                
-                // Just change the name so computer understands
-                val = val.replace(/log/g, 'Math.log10');
-            screen.value = eval(screen.value);
+    if (btntext === '='){
+        try {
+            let val = screen.value;
+            
+            val = val.replace(/log/g, 'Math.log10');
+            val = val.replace(/sqrt/g, 'Math.sqrt');
+            
+            screen.value = eval(val); 
         } catch {
-            screen.value = 'Error'
+            screen.value = 'Error';
         }
+        return;
     }
 
-        if (btntext === 'x!'){
+    if (btntext === 'x!'){
             let number = parseInt(screen.value);
 
             let fact = 1;
@@ -61,4 +68,5 @@ btns.forEach((btn) => {
         }
 
     });
+
 });
