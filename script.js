@@ -5,7 +5,6 @@ btns.forEach((btn) => {
     btn.addEventListener('click', function() {
         let btntext = btn.innerText;
         
-        //we added the pi value here because niche pi value k aage btntext bhi print ho rha thaa
         if (btntext === 'pi'){
             screen.value += Math.PI;
             return;
