@@ -1,5 +1,20 @@
 let screen = document.querySelector('#screen');
 let btns = document.querySelectorAll('.btn');
+let modeBtns = document.querySelectorAll('.mode-btn');
+let container = document.querySelector('.container');
+
+modeBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
+        modeBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        if (btn.dataset.mode === "scientific") {
+            container.classList.add('mode-scientific');
+        } else {
+            container.classList.remove('mode-scientific');
+        }
+    });
+});
 
 btns.forEach((btn) => {
     btn.addEventListener('click', function() {
