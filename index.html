@@ -4,92 +4,95 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet"/>
   <title>Calculator</title>
 </head>
 <body>
   <div class="container mode-basic">
     
     <div class="mode-switch">
-      <button class="mode-btn active" data-mode="basic">Arithmetic</button>
-      <button class="mode-btn" data-mode="scientific">Scientific</button>
+      <button class="mode-btn active" data-mode="basic" aria-label="Switch to arithmetic mode">Arithmetic</button>
+      <button class="mode-btn" data-mode="scientific" aria-label="Switch to scientific mode">Scientific</button>
     </div>
 
     <div class="btns" id="basic-pad">
       <div class="display">
-      <input id="screen" type="text" placeholder="0" readonly />
-    </div>
-      <div class="row">
-        <button class="btn">AC</button>
-        <button class="btn">CE</button>
-        <button class="btn">%</button>
-        <button class="btn">÷</button>
+        <button class="mic-btn" aria-label="Voice input"><i class="ri-mic-line"></i></button>
+        <input id="screen" type="text" placeholder="0" readonly />
       </div>
       <div class="row">
-        <button class="btn">7</button>
-        <button class="btn">8</button>
-        <button class="btn">9</button>
-        <button class="btn">×</button>
+        <button class="btn" aria-label="Clear all">AC</button>
+        <button class="btn" aria-label="Clear entry">CE</button>
+        <button class="btn" aria-label="Percentage">%</button>
+        <button class="btn" aria-label="Divide">÷</button>
       </div>
       <div class="row">
-        <button class="btn">4</button>
-        <button class="btn">5</button>
-        <button class="btn">6</button>
-        <button class="btn">-</button>
+        <button class="btn" aria-label="Number 7">7</button>
+        <button class="btn" aria-label="Number 8">8</button>
+        <button class="btn" aria-label="Number 9">9</button>
+        <button class="btn" aria-label="Multiply">×</button>
       </div>
       <div class="row">
-        <button class="btn">1</button>
-        <button class="btn">2</button>
-        <button class="btn">3</button>
-        <button class="btn">+</button>
+        <button class="btn" aria-label="Number 4">4</button>
+        <button class="btn" aria-label="Number 5">5</button>
+        <button class="btn" aria-label="Number 6">6</button>
+        <button class="btn" aria-label="Minus">-</button>
+      </div>
+      <div class="row">
+        <button class="btn" aria-label="Number 1">1</button>
+        <button class="btn" aria-label="Number 2">2</button>
+        <button class="btn" aria-label="Number 3">3</button>
+        <button class="btn" aria-label="Plus">+</button>
       </div>
       <div class="row last-row">
-        <button class="btn">0</button>
-        <button class="btn">(</button>
-        <button class="btn">)</button>
-        <button class="btn">.</button>
-        <button class="btn equals">=</button>
+        <button class="btn" aria-label="Number 0">0</button>
+        <button class="btn" aria-label="Open bracket">(</button>
+        <button class="btn" aria-label="Close bracket">)</button>
+        <button class="btn" aria-label="Decimal point">.</button>
+        <button class="btn equals" aria-label="Calculate result">=</button>
       </div>
     </div>
 
     <div class="btns" id="sci-pad">
       <div class="display">
-      <input id="screen" type="text" placeholder="0" readonly />
-    </div>
+        <button class="mic-btn" aria-label="Voice input"><i class="ri-mic-line"></i></button>
+        <input id="screen" type="text" placeholder="0" readonly />
+      </div>
       <div class="sci-grid">
-        <button class="btn">AC</button>
-        <button class="btn">CE</button>
-        <button class="btn">x!</button>
-        <button class="btn">(</button>
-        <button class="btn">)</button>
-        <button class="btn">%</button>
+        <button class="btn" aria-label="Clear all">AC</button>
+        <button class="btn" aria-label="Clear entry">CE</button>
+        <button class="btn" aria-label="Factorial">x!</button>
+        <button class="btn" aria-label="Open bracket">(</button>
+        <button class="btn" aria-label="Close bracket">)</button>
+        <button class="btn" aria-label="Percentage">%</button>
 
-        <button class="btn">sin</button>
-        <button class="btn">cos</button>
-        <button class="btn">tan</button>
-        <button class="btn">pi</button>
-        <button class="btn">log</button>
-        <button class="btn">root</button>
+        <button class="btn" aria-label="Sine">sin</button>
+        <button class="btn" aria-label="Cosine">cos</button>
+        <button class="btn" aria-label="Tangent">tan</button>
+        <button class="btn" aria-label="Pi">pi</button>
+        <button class="btn" aria-label="Logarithm">log</button>
+        <button class="btn" aria-label="Square root">root</button>
 
-        <button class="btn">7</button>
-        <button class="btn">8</button>
-        <button class="btn">9</button>
-        <button class="btn">×</button>
-        <button class="btn">÷</button>
-        <button class="btn">-</button>
+        <button class="btn" aria-label="Number 7">7</button>
+        <button class="btn" aria-label="Number 8">8</button>
+        <button class="btn" aria-label="Number 9">9</button>
+        <button class="btn" aria-label="Multiply">×</button>
+        <button class="btn" aria-label="Divide">÷</button>
+        <button class="btn" aria-label="Minus">-</button>
 
-        <button class="btn">4</button>
-        <button class="btn">5</button>
-        <button class="btn">6</button>
-        <button class="btn">+</button>
-        <button class="btn">e</button>
-        <button class="btn">x^y</button>
+        <button class="btn" aria-label="Number 4">4</button>
+        <button class="btn" aria-label="Number 5">5</button>
+        <button class="btn" aria-label="Number 6">6</button>
+        <button class="btn" aria-label="Plus">+</button>
+        <button class="btn" aria-label="Euler constant">e</button>
+        <button class="btn" aria-label="Power x to y">x^y</button>
 
-        <button class="btn">1</button>
-        <button class="btn">2</button>
-        <button class="btn">3</button>
-        <button class="btn">0</button>
-        <button class="btn">.</button>
-        <button class="btn equals">=</button>
+        <button class="btn" aria-label="Number 1">1</button>
+        <button class="btn" aria-label="Number 2">2</button>
+        <button class="btn" aria-label="Number 3">3</button>
+        <button class="btn" aria-label="Number 0">0</button>
+        <button class="btn" aria-label="Decimal point">.</button>
+        <button class="btn equals" aria-label="Calculate result">=</button>
       </div>
     </div>
   </div>
