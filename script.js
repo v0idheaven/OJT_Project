@@ -1,4 +1,5 @@
-let screen = document.querySelector('#screen');
+let basicscreen = document.querySelector('#basic-screen');
+let sciscreen = document.querySelector('#scientific-screen');
 let btns = document.querySelectorAll('.btn');
 let modeBtns = document.querySelectorAll('.mode-btn');
 let container = document.querySelector('.container');
@@ -10,8 +11,10 @@ modeBtns.forEach(btn => {
 
         if (btn.dataset.mode === "scientific") {
             container.classList.add('mode-scientific');
+            currentScreen = sciscreen;
         } else {
             container.classList.remove('mode-scientific');
+            currentScreen = basicscreen;
         }
     });
 });
@@ -21,42 +24,42 @@ btns.forEach((btn) => {
         let btntext = btn.innerText;
         
         if (btntext === 'pi'){
-            screen.value += Math.PI;
+            currentScreen.value += Math.PI;
             return;
         }
         
         if (btntext === 'log') {
-            screen.value += 'log(';
+            currentScreen.value += 'log(';
             return;
         }
         
         if (btntext === 'root'){
-            screen.value += 'sqrt(';
+            currentScreen.value += 'sqrt(';
             return;
         }
 
         if (btntext === 'x^y') {
-            screen.value += '^';
+            currentScreen.value += '^';
             return;
         }
 
         if (btntext === 'sin') {
-            screen.value += 'sin(';
+            currentScreen.value += 'sin(';
             return;
         }
 
         if (btntext === 'cos') {
-            screen.value += 'cos(';
+            currentScreen.value += 'cos(';
             return;
         }
 
         if (btntext === 'tan') {
-            screen.value += 'tan(';
+            currentScreen.value += 'tan(';
             return;
         }
 
         if (btntext === 'e') {
-            screen.value += 'e';
+            currentScreen.value += 'e';
             return;
         }
 
@@ -65,20 +68,20 @@ btns.forEach((btn) => {
             if (btntext === '×') btntext = '*';
             if (btntext === '÷') btntext = '/';
 
-            screen.value += btntext;
+            currentScreen.value += btntext;
         }
 
         if (btntext === 'AC') {
-            screen.value = '';
+            currentScreen.value = '';
         }
 
         if (btntext === 'CE'){
-            screen.value = screen.value.slice(0,-1)
+            currentScreen.value = currentScreen.value.slice(0,-1)
         }
 
     if (btntext === '='){
         try {
-            let val = screen.value;
+            let val = currentScreen.value;
             
             val = val.replace(/log/g, 'Math.log10');
             val = val.replace(/sqrt/g, 'Math.sqrt');
@@ -91,26 +94,26 @@ btns.forEach((btn) => {
 
             
 
-            screen.value = eval(val); 
+            currentScreen.value = eval(val); 
         } catch {
-            screen.value = 'Error';
+            currentScreen.value = 'Error';
         }
         return;
     }
 
     if (btntext === 'x!'){
-            let number = parseInt(screen.value);
+            let number = parseInt(currentScreen.value);
 
             let fact = 1;
 
             if (number < 0){
-                screen.value = 'Error';
+                currentScreen.value = 'Error';
             }
             else{
                 for (let i = 1; i<=number; i++){
                     fact = fact * i
                 }
-                screen.value = fact;
+                currentScreen.value = fact;
             }
         }
 
