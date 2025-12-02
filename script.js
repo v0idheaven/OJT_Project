@@ -13,7 +13,7 @@ document
       let text = "";
       
       for (let val of screen.value) {
-        if ("0123456789+-*/().%^!e".includes(val)) {
+        if ("0123456789+-*/().%^!etansicorlgq".includes(val)) {
           text += val;
         }
       }
@@ -29,6 +29,29 @@ document
       screen.value = text;
     });
   });
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    
+    try {
+      let val = currentScreen.value;
+      val = val.replaceAll("log", "Math.log10");
+      val = val.replaceAll("sqrt", "Math.sqrt");
+      val = val.replaceAll("sin", "Math.sin");
+      val = val.replaceAll("cos", "Math.cos");
+      val = val.replaceAll("tan", "Math.tan");
+      val = val.replaceAll("pi", "Math.PI");
+      val = val.replaceAll("^", "**");
+      val = val.replaceAll("e", "Math.E");
+
+      currentScreen.value = eval(val);
+    } catch {
+      currentScreen.value = "Error";
+    }
+  }
+});
+
 
 const themeToggleBtn = document.getElementById("theme-toggle");
 if (themeToggleBtn) {
