@@ -4,6 +4,12 @@ let btns = document.querySelectorAll('.btn');
 let modeBtns = document.querySelectorAll('.mode-btn');
 let container = document.querySelector('.container');
 
+document.querySelectorAll("#basic-screen, #scientific-screen").forEach(screen => {
+  screen.addEventListener("input", () => {
+    screen.value = screen.value.replace(/[^0-9+\-*/().%]/g, "");
+  });
+});
+
 modeBtns.forEach(btn => {
     btn.addEventListener('click', function () {
         modeBtns.forEach(b => b.classList.remove('active'));
