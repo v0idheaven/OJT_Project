@@ -1,58 +1,82 @@
+:root {
+  --bg-color: #ededed;
+  --container-bg: #fff;
+  --screen-bg: #e6e6e6;
+  --btn-bg: #dadada;
+  --btn-active: #333;
+  --text-color: #000;
+  --border-color: #000;
+  --equals-bg: #333;
+  --equals-text: #fff;
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --container-bg: #1e1e1e;
+  --screen-bg: #2d2d2d;
+  --btn-bg: #333;
+  --btn-active: #dadada;
+  --text-color: #fff;
+  --border-color: #555;
+  --equals-bg: #00bcd4;
+  --equals-text: #000;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
-  background: #ededed;
+  background: var(--bg-color);
+  color: var(--text-color);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   font-family: sans-serif;
+  transition: background 0.3s ease;
+}
+
+input, button {
+  color: var(--text-color);
 }
 
 #basic-pad {
   width: 400px;
   padding: 20px;
-  background: #fff;
+  background: var(--container-bg);
   border-radius: 15px;
-  border: 2px solid black;
+  border: 2px solid var(--border-color);
+  transition: background 0.3s ease;
 }
 
 #sci-pad{
   width: 650px;
   padding: 20px;
-  background: #fff;
+  background: var(--container-bg);
   border-radius: 15px;
-  border: 2px solid black;
+  border: 2px solid var(--border-color);
+  transition: background 0.3s ease;
 }
 
 .display{
   position: relative;
 }
 
-.display #basic-screen {
-  width: 100%;
-  height: 82px;
-  font-size: 36px;
-  border-radius: 10px;
-  border: 2px solid black;
-  text-align: right;
-  padding: 15px 20px 15px 60px;
-  margin-bottom: 20px;
-  background: #e6e6e6;
-}
+.display #basic-screen,
 .display #scientific-screen {
   width: 100%;
   height: 82px;
   font-size: 36px;
   border-radius: 10px;
-  border: 2px solid black;
+  border: 2px solid var(--border-color);
   text-align: right;
   padding: 15px 20px 15px 60px;
   margin-bottom: 20px;
-  background: #e6e6e6;
+  background: var(--screen-bg);
+  color: var(--text-color);
 }
 
 .mic-btn {
@@ -69,6 +93,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--text-color);
 }
 
 .mic-btn.listening {
@@ -84,13 +109,29 @@ body {
 .mode-btn {
   padding: 6px 16px;
   border-radius: 18px;
-  border: 2px solid black;
+  border: 2px solid var(--border-color);
   cursor: pointer;
   font-size: 14px;
+  background: transparent;
+}
+
+#theme-toggle {
+  padding: 6px 16px;
+  border-radius: 18px;
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+  font-size: 14px;
+  background: transparent;
 }
 .mode-btn.active {
-  background: black;
-  color: white;
+  background: var(--btn-active);
+  color: var(--bg-color);
+  border-color: var(--btn-active);
+}
+
+#theme-toggle {
+    font-size: 18px;
+    padding: 3px 12px;
 }
 
 #basic-pad .row {
@@ -102,7 +143,7 @@ body {
 #basic-pad .btn {
   height: 55px;
   border-radius: 8px;
-  background: #dadada;
+  background: var(--btn-bg);
   font-size: 20px;
   border: none;
   cursor: pointer;
@@ -113,8 +154,8 @@ body {
   gap: 10px;
 }
 #basic-pad .equals {
-  background: #333;
-  color: #fff;
+  background: var(--equals-bg);
+  color: var(--equals-text);
   font-weight: bold;
 }
 
@@ -128,13 +169,13 @@ body {
   height: 55px;
   font-size: 18px;
   border-radius: 8px;
-  background: #dadada;
+  background: var(--btn-bg);
   cursor: pointer;
   border: none;
 }
 #sci-pad .equals {
-  background: #333;
-  color: white;
+  background: var(--equals-bg);
+  color: var(--equals-text);
   font-weight: bold;
 }
 
