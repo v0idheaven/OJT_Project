@@ -10,14 +10,14 @@ let closeHistoryBtn = document.getElementById("close-history");
 let clearHistoryBtn = document.getElementById("clear-history");
 let historyList = document.getElementById("history-list");
 
-let currentScreen = basicscreen; 
+let currentScreen = basicscreen;
 
 document
   .querySelectorAll("#basic-screen, #scientific-screen")
   .forEach((screen) => {
     screen.addEventListener("input", () => {
       let text = "";
-      
+
       for (let val of screen.value) {
         if ("0123456789+-*/().%^!etansicorlgq".includes(val)) {
           text += val;
@@ -27,7 +27,7 @@ document
       let lastChar = text.slice(-1);
       let secondLastChar = text.slice(-2, -1);
       let operators = "+-*/";
-      
+
       if (operators.includes(lastChar) && operators.includes(secondLastChar)) {
         text = text.slice(0, -2) + lastChar;
       }
@@ -39,7 +39,7 @@ document
 document.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     event.preventDefault();
-    
+
     try {
       let val = currentScreen.value;
       val = val.replaceAll("log", "Math.log10");
@@ -58,34 +58,42 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-
 const themeToggleBtn = document.getElementById("theme-toggle");
 if (themeToggleBtn) {
-    themeToggleBtn.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-      
-      if (document.body.classList.contains("dark-mode")) {
-        themeToggleBtn.innerHTML = '<i class="ri-sun-line"></i>';
-      } else {
-        themeToggleBtn.innerHTML = '<i class="ri-moon-line"></i>';
-      }
-    });
+  themeToggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+      localStorage.setItem("theme", "dark");
+      themeToggleBtn.innerHTML = '<i class="ri-sun-line"></i>';
+    } else {
+      localStorage.setItem("theme", "light");
+      themeToggleBtn.innerHTML = '<i class="ri-moon-line"></i>';
+    }
+  });
 }
 
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark-mode");
+  themeToggleBtn.innerHTML = '<i class="ri-sun-line"></i>';
+} else {
+  themeToggleBtn.innerHTML = '<i class="ri-moon-line"></i>';
+}
 
-    historyBtn.addEventListener("click", () => {
-      historyPanel.classList.add("open");
-    });
+historyBtn.addEventListener("click", () => {
+  historyPanel.classList.add("open");
+});
 
-    closeHistoryBtn.addEventListener("click", () => {
-      historyPanel.classList.remove("open");
-    });
+closeHistoryBtn.addEventListener("click", () => {
+  historyPanel.classList.remove("open");
+});
 
-    clearHistoryBtn.addEventListener("click", () => {
-      historyList.innerHTML = "";
-    });
+clearHistoryBtn.addEventListener("click", () => {
+  historyList.innerHTML = "";
+  localStorage.removeItem("calcHistory");
+});
 
-    function addToHistory(expression, result) {
+function addToHistory(expression, result) {
   let item = document.createElement("div");
   item.classList.add("history-item");
 
@@ -100,7 +108,29 @@ if (themeToggleBtn) {
   });
 
   historyList.prepend(item);
+
+  let stored = JSON.parse(localStorage.getItem("calcHistory")) || [];
+  stored.unshift({ expression, result });
+  localStorage.setItem("calcHistory", JSON.stringify(stored));
 }
+
+function loadHistory() {
+  let stored = JSON.parse(localStorage.getItem("calcHistory")) || [];
+  stored.forEach((item) => {
+    let div = document.createElement("div");
+    div.classList.add("history-item");
+    div.innerHTML = `
+    <div class="history-expression">${item.expression}</div>
+      <div class="history-result">= ${item.result}</div>
+      `;
+    div.addEventListener("click", () => {
+      currentScreen.value += item.result;
+      historyPanel.classList.remove("open");
+    });
+    historyList.prepend(div);
+  });
+}
+loadHistory();
 
 modeBtns.forEach((btn) => {
   btn.addEventListener("click", function () {
@@ -120,10 +150,10 @@ modeBtns.forEach((btn) => {
 btns.forEach((btn) => {
   btn.addEventListener("click", function () {
     let btntext = btn.innerHTML;
-    
-    if (btn.id === 'del') {
+
+    if (btn.id === "del") {
       currentScreen.value = currentScreen.value.slice(0, -1);
-      return; 
+      return;
     }
 
     if (btntext === "pi") {
@@ -166,11 +196,18 @@ btns.forEach((btn) => {
       return;
     }
 
-    if (btntext !== "AC" && btntext !== '<i class="ri-delete-back-2-line"></i>' && btntext !== "=") {
+    if (
+      btntext !== "AC" &&
+      btntext !== '<i class="ri-delete-back-2-line"></i>' &&
+      btntext !== "="
+    ) {
       if (btntext === "×") btntext = "*";
       if (btntext === "÷") btntext = "/";
 
-      if ("+-*/".includes(currentScreen.value.slice(-1)) && "+-*/".includes(btntext)) {
+      if (
+        "+-*/".includes(currentScreen.value.slice(-1)) &&
+        "+-*/".includes(btntext)
+      ) {
         currentScreen.value = currentScreen.value.slice(0, -1) + btntext;
         return;
       }
@@ -181,9 +218,9 @@ btns.forEach((btn) => {
     if (btntext === "AC") {
       currentScreen.value = "";
     }
-    if (btn.id === 'del') {
+    if (btn.id === "del") {
       currentScreen.value = currentScreen.value.slice(0, -1);
-      return; 
+      return;
     }
 
     if (btntext === "=") {
@@ -204,7 +241,6 @@ btns.forEach((btn) => {
         currentScreen.value = result;
 
         addToHistory(expression, result);
-
       } catch {
         currentScreen.value = "Error";
       }
