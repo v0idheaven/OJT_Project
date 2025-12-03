@@ -1,32 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
   <title>Calculator</title>
 </head>
+
 <body>
   <div class="container mode-basic">
-    
     <div class="mode-switch">
-      <button class="mode-btn active" data-mode="basic" aria-label="Switch to arithmetic mode">Arithmetic</button>
-      <button class="mode-btn" data-mode="scientific" aria-label="Switch to scientific mode">Scientific</button>
+      <button class="mode-btn active" data-mode="basic" aria-label="Switch to arithmetic mode">
+        Arithmetic
+      </button>
+      <button class="mode-btn" data-mode="scientific" aria-label="Switch to scientific mode">
+        Scientific
+      </button>
       <button id="theme-toggle" aria-label="Toggle Dark Mode">
-        <i class="ri-moon-line"></i></button>
+        <i class="ri-moon-line"></i>
+      </button>
+      <button id="history-btn" aria-label="View History">
+        <i class="ri-history-line"></i>
+      </button>
+    </div>
+
+    <div class="history-panel">
+      <div class="history-header">
+        <h3>History</h3>
+        <button id="close-history"><i class="ri-close-line"></i></button>
+      </div>
+      <div id="history-list"></div>
+      <button id="clear-history">Clear History</button>
     </div>
 
     <div class="btns" id="basic-pad">
       <div class="display">
-        <button class="mic-btn" aria-label="Voice input"><i class="ri-mic-line"></i></button>
-        <input id="basic-screen" type="text" placeholder="0"  />
+        <button class="mic-btn" aria-label="Voice input">
+          <i class="ri-mic-line"></i>
+        </button>
+        <input id="basic-screen" type="text" placeholder="0" />
       </div>
       <div class="row">
         <button class="btn" aria-label="Clear all">AC</button>
         <button class="btn" aria-label="Percentage">%</button>
         <button class="btn" aria-label="Divide">÷</button>
-        <button class="btn" aria-label="Clear entry"><i class="ri-delete-back-2-line"></i></button>
+        <button class="btn" id="del" aria-label="Clear entry">
+          <i class="ri-delete-back-2-line"></i>
+        </button>
       </div>
       <div class="row">
         <button class="btn" aria-label="Number 7">7</button>
@@ -57,8 +79,10 @@
 
     <div class="btns" id="sci-pad">
       <div class="display">
-        <button class="mic-btn" aria-label="Voice input"><i class="ri-mic-line"></i></button>
-        <input id="scientific-screen" type="text" placeholder="0"  />
+        <button class="mic-btn" aria-label="Voice input">
+          <i class="ri-mic-line"></i>
+        </button>
+        <input id="scientific-screen" type="text" placeholder="0" />
       </div>
       <div class="sci-grid">
         <button class="btn" aria-label="Clear all">AC</button>
@@ -66,7 +90,9 @@
         <button class="btn" aria-label="Open bracket">(</button>
         <button class="btn" aria-label="Close bracket">)</button>
         <button class="btn" aria-label="Percentage">%</button>
-        <button class="btn" aria-label="Clear entry"><i class="ri-delete-back-2-line"></i></button>
+        <button class="btn" id="del" aria-label="Clear entry">
+          <i class="ri-delete-back-2-line"></i>
+        </button>
 
         <button class="btn" aria-label="Sine">sin</button>
         <button class="btn" aria-label="Cosine">cos</button>
@@ -99,6 +125,7 @@
     </div>
   </div>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>

@@ -1,13 +1,13 @@
 :root {
   --bg-color: #ededed;
-  --container-bg: #fff;
+  --container-bg: white;
   --screen-bg: #e6e6e6;
   --btn-bg: #dadada;
   --btn-active: #333;
-  --text-color: #000;
-  --border-color: #000;
+  --text-color: black;
+  --border-color: black;
   --equals-bg: #333;
-  --equals-text: #fff;
+  --equals-text: white;
 }
 
 body.dark-mode {
@@ -16,10 +16,10 @@ body.dark-mode {
   --screen-bg: #2d2d2d;
   --btn-bg: #333;
   --btn-active: #dadada;
-  --text-color: #fff;
+  --text-color: white;
   --border-color: #555;
   --equals-bg: #00bcd4;
-  --equals-text: #000;
+  --equals-text: black;
 }
 
 * {
@@ -182,3 +182,99 @@ input, button {
 #sci-pad { display: none; }
 .container.mode-scientific #basic-pad { display: none; }
 .container.mode-scientific #sci-pad { display: block; }
+
+#history-btn {
+  padding: 6px 16px;
+  border-radius: 18px;
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+  font-size: 14px;
+  background: transparent;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.history-panel {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 300px;
+  height: 100vh;
+  background: var(--container-bg);
+  border-left: 2px solid var(--border-color);
+  box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.history-panel.open {
+  right: 0;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  color: var(--text-color);
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 10px;
+}
+
+#close-history {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+#history-list {
+  flex-grow: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.history-item {
+  background: var(--screen-bg);
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+}
+.history-item:hover {
+  opacity: 0.8;
+}
+
+.history-expression {
+  font-size: 14px;
+  color: var(--text-color);
+  opacity: 0.7;
+  text-align: right;
+  margin-bottom: 5px;
+}
+
+.history-result {
+  font-size: 20px;
+  color: var(--text-color);
+  font-weight: bold;
+  text-align: right;
+}
+
+#clear-history {
+  margin-top: 15px;
+  padding: 10px;
+  background: var(--btn-active);
+  color: var(--bg-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}

@@ -4,6 +4,12 @@ let btns = document.querySelectorAll(".btn");
 let modeBtns = document.querySelectorAll(".mode-btn");
 let container = document.querySelector(".container");
 
+let historyBtn = document.getElementById("history-btn");
+let historyPanel = document.querySelector(".history-panel");
+let closeHistoryBtn = document.getElementById("close-history");
+let clearHistoryBtn = document.getElementById("clear-history");
+let historyList = document.getElementById("history-list");
+
 let currentScreen = basicscreen; 
 
 document
@@ -66,6 +72,36 @@ if (themeToggleBtn) {
     });
 }
 
+
+    historyBtn.addEventListener("click", () => {
+      historyPanel.classList.add("open");
+    });
+
+    closeHistoryBtn.addEventListener("click", () => {
+      historyPanel.classList.remove("open");
+    });
+
+    clearHistoryBtn.addEventListener("click", () => {
+      historyList.innerHTML = "";
+    });
+
+    function addToHistory(expression, result) {
+  let item = document.createElement("div");
+  item.classList.add("history-item");
+
+  item.innerHTML = `
+    <div class="history-expression">${expression}</div>
+    <div class="history-result">= ${result}</div>
+  `;
+
+  item.addEventListener("click", () => {
+    currentScreen.value += result;
+    historyPanel.classList.remove("open");
+  });
+
+  historyList.prepend(item);
+}
+
 modeBtns.forEach((btn) => {
   btn.addEventListener("click", function () {
     modeBtns.forEach((b) => b.classList.remove("active"));
@@ -84,6 +120,11 @@ modeBtns.forEach((btn) => {
 btns.forEach((btn) => {
   btn.addEventListener("click", function () {
     let btntext = btn.innerHTML;
+    
+    if (btn.id === 'del') {
+      currentScreen.value = currentScreen.value.slice(0, -1);
+      return; 
+    }
 
     if (btntext === "pi") {
       currentScreen.value += Math.PI;
@@ -140,13 +181,14 @@ btns.forEach((btn) => {
     if (btntext === "AC") {
       currentScreen.value = "";
     }
-
-    if (btntext === '<i class="ri-delete-back-2-line"></i>') {
+    if (btn.id === 'del') {
       currentScreen.value = currentScreen.value.slice(0, -1);
+      return; 
     }
 
     if (btntext === "=") {
       try {
+        let expression = currentScreen.value;
         let val = currentScreen.value;
 
         val = val.replaceAll("log", "Math.log10");
@@ -158,7 +200,11 @@ btns.forEach((btn) => {
         val = val.replaceAll("^", "**");
         val = val.replaceAll("e", "Math.E");
 
-        currentScreen.value = eval(val);
+        let result = eval(val);
+        currentScreen.value = result;
+
+        addToHistory(expression, result);
+
       } catch {
         currentScreen.value = "Error";
       }
