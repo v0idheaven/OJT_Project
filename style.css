@@ -278,3 +278,8 @@ input, button {
   cursor: pointer;
   font-weight: bold;
 }
+
+.mic-btn.listening i {
+  color: #ff4444;
+  animation: pulse 1.5s infinite;
+}
