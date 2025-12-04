@@ -1,12 +1,12 @@
 # Voice-Enabled Arithmetic and Scientific Calculator
 
-## Preview
+<!-- ## Preview
 
 <div><img src="../Screenshot 2025-12-04 165336.png" alt="Calculator-img"></div>
 
 <div><img src="../Screenshot 2025-12-04 165351.png" alt="Calculator-img"></div>
 
-<div><img src="../Screenshot 2025-12-04 165405.png" alt="Calculator-img"></div>
+<div><img src="../Screenshot 2025-12-04 165405.png" alt="Calculator-img"></div> -->
 
 ## Brief One Line Summary
 A responsive, dual-mode web calculator featuring arithmetic and scientific operations, enhanced with Web Speech API for hands-free voice control and persistent history tracking.
