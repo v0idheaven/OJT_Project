@@ -48,6 +48,8 @@ function processVoiceInput(text) {
     "plus": "+",
     "add": "+",
     "minus": "-",
+    "into": "*",
+    "under root": "sqrt(",
     "subtract": "-",
     "times": "*",
     "multiply": "*",
@@ -72,7 +74,9 @@ function processVoiceInput(text) {
     "one": "1",
     "equals": "=",
     "equal": "=",
-    "equal to": "="
+    "equal to": "=",
+    "clear": "AC",
+    "reset": "AC",
   };
 
   for (const [word, symbol] of Object.entries(replacements)) {
