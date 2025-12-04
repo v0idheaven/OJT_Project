@@ -1,4 +1,4 @@
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const SpeechRecognition = window.SpeechRecognition;
 
 if (SpeechRecognition) {
   const recognition = new SpeechRecognition();
@@ -30,8 +30,6 @@ if (SpeechRecognition) {
     processVoiceInput(transcript);
   };
 
-} else {
-  alert("Voice input is not supported in this browser. Try Chrome or Edge.");
 }
 
 function processVoiceInput(text) {
@@ -60,12 +58,21 @@ function processVoiceInput(text) {
     "point": ".",
     "sine": "sin(",
     "cosine": "cos(",
+    "cos": "cos(",
+    "bracket close": ")",
+    "bracketopen": "(",
+    "openbracket": "(",
+    "closebracket": ")",
+    "factorial": "!",
     "tangent": "tan(",
     "log": "log(",
     "root": "sqrt(",
     "power": "^",
     "pi": "pi",
     "one": "1",
+    "equals": "=",
+    "equal": "=",
+    "equal to": "="
   };
 
   for (const [word, symbol] of Object.entries(replacements)) {
