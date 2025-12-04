@@ -18,8 +18,14 @@ body.dark-mode {
   --btn-active: #dadada;
   --text-color: white;
   --border-color: #555;
-  --equals-bg: #00bcd4;
+  --equals-bg: #09ff5f;
   --equals-text: black;
+  
+}
+
+
+body.dark-mode {
+  --ac-bg: #ff4444; 
 }
 
 * {
@@ -27,6 +33,17 @@ body.dark-mode {
   padding: 0;
   box-sizing: border-box;
 }
+
+
+:root {
+  /* ... existing variables ... */
+  --equals-bg: #333;
+  --equals-text: white;
+  
+  /* Add this new line for Light Mode Red */
+  --ac-bg: #ff6b6b; 
+}
+
 
 body {
   background: var(--bg-color);
@@ -282,4 +299,22 @@ input, button {
 .mic-btn.listening i {
   color: #ff4444;
   animation: pulse 1.5s infinite;
+}
+
+
+
+
+/* Update the AC button style to match the Equals button background */
+#basic-pad .ac-btn,
+#sci-pad .ac-btn {
+  background: var(--equals-bg); /* Sets BG to same as "=" */
+  color: white;                 /* Sets text to White */
+}
+
+
+/* Override AC button to Red ONLY in Dark Mode */
+body.dark-mode #basic-pad .ac-btn,
+body.dark-mode #sci-pad .ac-btn {
+  background: #ff4444;  /* Red color */
+  color: white;         /* Keep text white */
 }
