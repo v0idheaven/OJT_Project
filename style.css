@@ -304,17 +304,17 @@ input, button {
 
 
 
-/* Update the AC button style to match the Equals button background */
+/* for ac colour in light mood  */
 #basic-pad .ac-btn,
 #sci-pad .ac-btn {
-  background: var(--equals-bg); /* Sets BG to same as "=" */
-  color: white;                 /* Sets text to White */
+  background: var(--equals-bg); 
+  color: white;                
 }
 
 
-/* Override AC button to Red ONLY in Dark Mode */
+/* Red ONLY in Dark Mode  */
 body.dark-mode #basic-pad .ac-btn,
 body.dark-mode #sci-pad .ac-btn {
-  background: #ff4444;  /* Red color */
-  color: white;         /* Keep text white */
+  background: #ff4444;  
+  color: white;        
 }
