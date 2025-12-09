@@ -36,11 +36,9 @@ body.dark-mode {
 
 
 :root {
-  /* ... existing variables ... */
   --equals-bg: #333;
   --equals-text: white;
   
-  /* Add this new line for Light Mode Red */
   --ac-bg: #ff6b6b; 
 }
 
