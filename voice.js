@@ -77,6 +77,9 @@ function processVoiceInput(text) {
     "equal to": "=",
     "clear": "AC",
     "reset": "AC",
+    "equals to": "=",
+    "tan": "tan(",
+    "e": "e"
   };
 
   for (const [word, symbol] of Object.entries(replacements)) {
